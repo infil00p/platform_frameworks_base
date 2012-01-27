@@ -753,11 +753,12 @@ class BrowserFrame extends Handler {
             }
 
         // file:///android_asset
-        // Note: We need to make sure to strip the anchor tag
+        // Note: The Anchor Tags and Query Params need stripping
         } else if (url.startsWith(ANDROID_ASSET)) {
             url = url.replaceFirst(ANDROID_ASSET, "");
             url = URLUtil.stripAnchor(url);
-            try {
+            url = URLUtil.stripQuery(url); 
+	    try {
                 AssetManager assets = mContext.getAssets();
                 return assets.open(url, AssetManager.ACCESS_STREAMING);
             } catch (IOException e) {
