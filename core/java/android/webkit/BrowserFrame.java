@@ -757,7 +757,10 @@ class BrowserFrame extends Handler {
         } else if (url.startsWith(ANDROID_ASSET)) {
             url = url.replaceFirst(ANDROID_ASSET, "");
             url = URLUtil.stripAnchor(url);
-            url = URLUtil.stripQuery(url); 
+            int queryIndex = url.indexOf('?');
+            if (queryIndex != -1) {
+		url = url.substring(0, queryIndex);
+            }
 	    try {
                 AssetManager assets = mContext.getAssets();
                 return assets.open(url, AssetManager.ACCESS_STREAMING);

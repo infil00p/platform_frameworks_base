@@ -286,17 +286,6 @@ public final class URLUtil {
     }
 
     /**
-     * Strips the url of a the query params.
-     */
-    public static String stripQuery(String url) {
-        int queryIndex = url.indexOf('?');
-        if (queryIndex != -1) {
-            return url.substring(0, queryIndex);
-        }
-        return url;
-    }
- 
-    /**
      * Guesses canonical filename that a download would have, using
      * the URL and contentDisposition. File extension, if not defined,
      * is added based on the mimetype
